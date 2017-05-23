@@ -113,6 +113,7 @@ while specialDay == 0 {
  */
 
 // Add 'process' code below....
+/*
 var allDays : [Any] = []
 var specialDayString = ""
 for currentDay in 1...numberOfDays {
@@ -123,7 +124,7 @@ for currentDay in 1...numberOfDays {
     allDays.append(currentDay)
     }
 }
-
+*/
 /*
  
  OUTPUT
@@ -136,7 +137,23 @@ for currentDay in 1...numberOfDays {
 
 // Add 'output' code below... replace what is here as needed.
 var letterSpacing = "    "
-var spacingBeforeNumber = "  "
+var spacingBeforeNumber = "   "
+var calendar = ""
+var positionInCal = 0
 var totalSpacingFirstRow = ("\(letterSpacing) * \(day-1) + \(spacingBeforeNumber)")
-print("Sun Mon Tue Wed Thu Fri Sat")
-
+calendar += "Sun Mon Tue Wed Thu Fri Sat"
+calendar += "\n"
+calendar += "\(totalSpacingFirstRow)"
+for i in 1...numberOfDays {
+    if i < 10{
+        calendar += "  "
+    } else {
+        calendar += " "
+    }
+    calendar += String(i)
+    
+    if i % 7 == 0 {
+        calendar += "\n"
+    }
+    print(calendar)
+}
