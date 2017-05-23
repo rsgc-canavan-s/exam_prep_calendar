@@ -19,13 +19,13 @@ import Foundation
  Make use of your test plan and algorithm to ensure your code is complete.
  
  */
-var inputToProcess : String = ""
 
+var day : Int = 0
 // Loop until valid input is received
-while inputToProcess == "" {
+while day == 0 {
     
     // Show the prompt
-    print("Ask the question here? ", terminator: "")
+    print("Enter day: ", terminator: "")
     
     // Get the user's input
     var input : String?
@@ -33,18 +33,75 @@ while inputToProcess == "" {
     
     // Use optional binding to see if the string can be unwrapped (to see if it is not nil)
     if let notNilInput = input {
-        
+        if let inputAsInteger = Int(notNilInput) {
+            if inputAsInteger >= 1 && inputAsInteger <= 7 {
+                day = inputAsInteger
+            }
+        }
         // You probably need to add additional checks to be sure the
         // input received is valid
         // Add checks as needed...
         
         // Save the input given, as we are certain it's what we are looking for now
-        inputToProcess = notNilInput
         
     }
     
 }
-
+var numberOfDays = 0
+// Loop until valid input is received
+while numberOfDays == 0 {
+    
+    // Show the prompt
+    print("Enter the number of days in the month: ", terminator: "")
+    
+    // Get the user's input
+    var input : String?
+    input = readLine()
+    
+    // Use optional binding to see if the string can be unwrapped (to see if it is not nil)
+    if let notNilInput = input {
+        if let inputAsInteger = Int(notNilInput) {
+            if inputAsInteger >= 28 && inputAsInteger <= 31 {
+                numberOfDays = inputAsInteger
+            }
+        }
+        // You probably need to add additional checks to be sure the
+        // input received is valid
+        // Add checks as needed...
+        
+        // Save the input given, as we are certain it's what we are looking for now
+        
+    }
+    
+}
+var inputToProcess3 = ""
+var specialDay = 0
+// Loop until valid input is received
+while specialDay == 0 {
+    
+    // Show the prompt
+    print("Enter the special day: ", terminator: "")
+    
+    // Get the user's input
+    var input : String?
+    input = readLine()
+    
+    // Use optional binding to see if the string can be unwrapped (to see if it is not nil)
+    if let notNilInput = input {
+        if let inputAsInteger = Int(notNilInput) {
+            if inputAsInteger >= 1 && inputAsInteger <= numberOfDays {
+                specialDay = inputAsInteger
+            }
+        }
+        // You probably need to add additional checks to be sure the
+        // input received is valid
+        // Add checks as needed...
+        
+        // Save the input given, as we are certain it's what we are looking for now
+        
+    }
+    
+}
 /*
  
  PROCESS
@@ -56,8 +113,16 @@ while inputToProcess == "" {
  */
 
 // Add 'process' code below....
-print("replace with process logic")
-
+var allDays : [Any] = []
+var specialDayString = ""
+for currentDay in 1...numberOfDays {
+    if currentDay == specialDay {
+        specialDayString = ("* + \(currentDay)")
+        allDays.append(specialDayString)
+    } else {
+    allDays.append(currentDay)
+    }
+}
 
 /*
  
@@ -70,4 +135,8 @@ print("replace with process logic")
  */
 
 // Add 'output' code below... replace what is here as needed.
-print("The input given was: \(inputToProcess)")
+var letterSpacing = "    "
+var spacingBeforeNumber = "  "
+var totalSpacingFirstRow = ("\(letterSpacing) * \(day-1) + \(spacingBeforeNumber)")
+print("Sun Mon Tue Wed Thu Fri Sat")
+
