@@ -114,17 +114,17 @@ while specialDay == 0 {
 
 // Add 'process' code below....
 /*
-var allDays : [Any] = []
-var specialDayString = ""
-for currentDay in 1...numberOfDays {
-    if currentDay == specialDay {
-        specialDayString = ("* + \(currentDay)")
-        allDays.append(specialDayString)
-    } else {
-    allDays.append(currentDay)
-    }
-}
-*/
+ var allDays : [Any] = []
+ var specialDayString = ""
+ for currentDay in 1...numberOfDays {
+ if currentDay == specialDay {
+ specialDayString = ("* + \(currentDay)")
+ allDays.append(specialDayString)
+ } else {
+ allDays.append(currentDay)
+ }
+ }
+ */
 /*
  
  OUTPUT
@@ -140,20 +140,40 @@ var letterSpacing = "    "
 var spacingBeforeNumber = "   "
 var calendar = ""
 var positionInCal = 0
-var totalSpacingFirstRow = ("\(letterSpacing) * \(day-1) + \(spacingBeforeNumber)")
 calendar += "Sun Mon Tue Wed Thu Fri Sat"
 calendar += "\n"
-calendar += "\(totalSpacingFirstRow)"
+if day == 1 {
+    calendar += "  "
+} else {
+    for totalSpacing in 0...day-2 {
+        calendar += "\(letterSpacing)"
+    }
+}
 for i in 1...numberOfDays {
-    if i < 10{
+    var lineBreak = 8 - day
+    if (i - 1) == lineBreak {
+        calendar += "\n"
+        //calendar += "  "
+    }
+    if i < 10 && i != 1 && (i - 1) != lineBreak{
+        if i == specialDay {
+            calendar += "  "
+        } else {
+        calendar += "   "
+        }
+    } else if i != specialDay {
         calendar += "  "
-    } else {
+    }
+    
+    if i % 7 == 0 && i != 7{
+        calendar += "\n"
         calendar += " "
     }
-    calendar += String(i)
-    
-    if i % 7 == 0 {
-        calendar += "\n"
+    if i == specialDay {
+        calendar += " "
+        calendar += "*\(i)"
+    } else {
+        calendar += "\(i)"
     }
-    print(calendar)
 }
+print(calendar)
