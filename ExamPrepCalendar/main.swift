@@ -140,6 +140,7 @@ var letterSpacing = "    "
 var spacingBeforeNumber = "   "
 var calendar = ""
 var positionInCal = 0
+var lineBreak = 8 - day
 calendar += "Sun Mon Tue Wed Thu Fri Sat"
 calendar += "\n"
 if day == 1 {
@@ -150,11 +151,9 @@ if day == 1 {
     }
 }
 for i in 1...numberOfDays {
-    var lineBreak = 8 - day
-    if (i - 1) == lineBreak {
-        calendar += "\n"
-        //calendar += "  "
-    }
+    //if (i - 1) == lineBreak {
+      //  calendar += "\n"
+    //}
     if i < 10 && i != 1 && (i - 1) != lineBreak{
         if i == specialDay {
             calendar += "  "
@@ -165,9 +164,14 @@ for i in 1...numberOfDays {
         calendar += "  "
     }
     
-    if i % 7 == 0 && i != 7{
+    if (i-1) == (lineBreak) && i < 10{
+        calendar += "\n"
+        calendar += "  "
+        lineBreak += 7
+    } else if (i-1) == (lineBreak) && i >= 10{
         calendar += "\n"
         calendar += " "
+        lineBreak += 7
     }
     if i == specialDay {
         calendar += " "
