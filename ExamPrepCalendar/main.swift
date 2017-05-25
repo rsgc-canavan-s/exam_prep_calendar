@@ -144,16 +144,13 @@ var lineBreak = 8 - day
 calendar += "Sun Mon Tue Wed Thu Fri Sat"
 calendar += "\n"
 if day == 1 {
-    calendar += "  "
+    
 } else {
     for totalSpacing in 0...day-2 {
         calendar += "\(letterSpacing)"
     }
 }
 for i in 1...numberOfDays {
-    //if (i - 1) == lineBreak {
-      //  calendar += "\n"
-    //}
     if i < 10 && i != 1 && (i - 1) != lineBreak{
         if i == specialDay {
             calendar += "  "
